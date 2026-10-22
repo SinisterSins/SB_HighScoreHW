@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Edible
   - Inedible
+  - Floor
   layers:
   - Default
   - TransparentFX

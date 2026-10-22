@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8109781388013106865}
   - component: {fileID: 2910326554663605207}
+  - component: {fileID: 9121533992640364271}
   - component: {fileID: 6549082801155333128}
   - component: {fileID: 6582283937187334666}
   m_Layer: 0
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1147056607333127501, guid: 476eda2c4716367439b0b636ddaf0a58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,6 +95,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &9121533992640364271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123583176422047799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c61bc5b8b241a54f9a2d270e472b656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientController
+  pointValue: 1
+  scoreManager: {fileID: 0}
 --- !u!58 &6549082801155333128
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -128,8 +143,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 22.61552
+  m_Offset: {x: 0, y: -3.379274}
+  m_Radius: 19.236244
 --- !u!50 &6582283937187334666
 Rigidbody2D:
   serializedVersion: 5

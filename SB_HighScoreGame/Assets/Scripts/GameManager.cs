@@ -1,15 +1,19 @@
 using System.Collections.Generic; //this is necessary for when calling lists
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     bool gameStarted = false;
     private InputAction spacePress;
-    float gameTimer = 5.0f;
+    private InputAction rButton;
+    float gameTimer = 15.0f;
     public GameObject gameStartPanel;
     public GameObject gameOverPanel;
+    public GameObject playerObject;
     public TMP_Text timerText;
     //public AudioSource bombSounds;
     //public AudioSource Temp;
@@ -20,8 +24,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         spacePress = InputSystem.actions.FindAction("Start");
+        rButton = InputSystem.actions.FindAction("Restart");
 
-        //InvokeRepeating("RandomItemSpawn", 0f, 0.75f);
     }
 
     // Update is called once per frame
@@ -36,6 +40,7 @@ public class GameManager : MonoBehaviour
 
         if (gameStarted == true)
         {
+            playerObject.SetActive(true);
             TimerCountdown();
             if (!IsInvoking("RandomItemSpawn"))
             {
@@ -43,6 +48,8 @@ public class GameManager : MonoBehaviour
             }
 
         }
+
+        GameRestart();
     }
 
     void RandomItemSpawn() //Randomly spawns GameObjects in the random range
@@ -70,7 +77,15 @@ public class GameManager : MonoBehaviour
             gameOverPanel.SetActive(true);
 
             //Call HighScoreUpdate
-            //scoreManager.HighScoreUpdate();
+            scoreManager.HighScoreUpdate();
+        }
+    }
+
+    void GameRestart()
+    {
+        if (rButton.IsPressed())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
