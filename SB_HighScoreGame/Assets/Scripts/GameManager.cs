@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     float gameTimer = 15.0f;
     public GameObject gameStartPanel;
     public GameObject gameOverPanel;
+    public GameObject gameAnimation;
     public GameObject playerObject;
     public TMP_Text timerText;
     //public AudioSource bombSounds;
@@ -52,6 +53,8 @@ public class GameManager : MonoBehaviour
 
         if (gameEnded == true)
         {
+            CancelInvoke();
+            gameAnimation.SetActive(true);
             if (rButton.IsPressed())
             {
                 GameRestart();
@@ -80,6 +83,8 @@ public class GameManager : MonoBehaviour
         if(gameTimer < 0)
         {
             GameEnd();
+            //Call HighScoreUpdate
+            scoreManager.HighScoreUpdate();
         }
     }
 
@@ -93,10 +98,6 @@ public class GameManager : MonoBehaviour
     {
         gameEnded = true;
         gameTimer = 0;
-        Time.timeScale = 0;
         gameOverPanel.SetActive(true);
-
-        //Call HighScoreUpdate
-        scoreManager.HighScoreUpdate();
     }
 }
