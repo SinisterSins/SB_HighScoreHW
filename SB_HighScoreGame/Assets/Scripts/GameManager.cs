@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameStarted = false;
+    bool gameEnded = false;
     private InputAction spacePress;
     private InputAction rButton;
     float gameTimer = 15.0f;
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         spacePress = InputSystem.actions.FindAction("Start");
-        rButton = InputSystem.actions.FindAction("Restart");
+        rButton = InputSystem.actions.FindAction("Reset");
 
     }
 
@@ -49,7 +50,13 @@ public class GameManager : MonoBehaviour
 
         }
 
-        GameRestart();
+        if (gameEnded == true)
+        {
+            if (rButton.IsPressed())
+            {
+                GameRestart();
+            }
+        }
     }
 
     void RandomItemSpawn() //Randomly spawns GameObjects in the random range
@@ -72,20 +79,24 @@ public class GameManager : MonoBehaviour
 
         if(gameTimer < 0)
         {
-            gameTimer = 0;
-            Time.timeScale = 0;
-            gameOverPanel.SetActive(true);
-
-            //Call HighScoreUpdate
-            scoreManager.HighScoreUpdate();
+            GameEnd();
         }
     }
 
     void GameRestart()
     {
-        if (rButton.IsPressed())
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+    
+         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+         Debug.Log("R button was pressed");
+    }
+    public void GameEnd()
+    {
+        gameEnded = true;
+        gameTimer = 0;
+        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);
+
+        //Call HighScoreUpdate
+        scoreManager.HighScoreUpdate();
     }
 }

@@ -2250,6 +2250,9 @@ MonoBehaviour:
   spawnableObjects:
   - {fileID: 2123583176422047799, guid: 3a3a92f46f3b1944d9be084207f21dff, type: 3}
   - {fileID: 2405493913026516484, guid: edbfd0e2830cb414fba078fc5766f8f1, type: 3}
+  - {fileID: 3665091034989715467, guid: 63fea81737892dd438ee1255225c3b3b, type: 3}
+  - {fileID: 1776183754891398908, guid: 11d220d9402a3e143abf6ade5243ff91, type: 3}
+  - {fileID: 2211663316220965803, guid: 39b5986703eeb144a9d765a7e513a541, type: 3}
   scoreManager: {fileID: 575904016}
 --- !u!4 &1332571913
 Transform:
